@@ -1,0 +1,153 @@
+{
+  "tipo": "servico",
+  "valorHora": 20,
+  "horasSemana": 52,
+  "metaSobraPct": 30,
+  "despesas": {
+    "porMes": 6000,
+    "ferramentasPorMes": 33.33,
+    "totalPorMes": 6033.33,
+    "porHora": 26.78,
+    "horasMes": 225.33,
+    "lista": [
+      {
+        "categoria": "Tudo junto (não sei separar)",
+        "valor": 6000
+      }
+    ],
+    "ferramentas": [
+      {
+        "nome": "Jogo de chaves",
+        "porMes": 33.33
+      }
+    ]
+  },
+  "resumo": {
+    "sobraMesTotal": 2190.84,
+    "horasOcupadasMes": 74.17
+  },
+  "itens": [
+    {
+      "id": "b1a2c3d4-0000-4000-8000-000000000002",
+      "nome": "Troca de câmara (comum)",
+      "preco": 40,
+      "custoTotal": 40.59171597633136,
+      "partes": {
+        "material": 25,
+        "trabalho": 6.67,
+        "despesas": 8.93,
+        "perdas": 0
+      },
+      "precoMinimo": 40.6,
+      "precoIdeal": 57.99,
+      "sobra": -0.59,
+      "sobraPct": -1.5,
+      "sobraPorHora": -1.78,
+      "minutos": 20,
+      "status": "vermelho",
+      "vendasMes": 30,
+      "sobraMes": -17.75,
+      "faltando": [],
+      "explicacao": [
+        "O que mais pesa no custo é **material**: R$ 25,00 de R$ 40,59 (62%).",
+        "Hoje você cobra R$ 40,00, mas cada atendimento custa R$ 40,59. Você paga R$ 0,59 para trabalhar. Com 30 atendimentos por mês, são R$ 17,75 a menos no mês.",
+        "Para não ter prejuízo, cobre pelo menos **R$ 40,60**. Para ter a sobra de 30% que você definiu, **R$ 57,99**."
+      ],
+      "insumosMaisCaros": [
+        {
+          "nome": "Câmara de ar comum",
+          "porUnidade": 25
+        }
+      ]
+    },
+    {
+      "id": "b1a2c3d4-0000-4000-8000-000000000003",
+      "nome": "Troca de câmara (performance)",
+      "preco": 105,
+      "custoTotal": 79.48964497041419,
+      "partes": {
+        "material": 60,
+        "trabalho": 8.33,
+        "despesas": 11.16,
+        "perdas": 0
+      },
+      "precoMinimo": 79.49,
+      "precoIdeal": 113.56,
+      "sobra": 25.51,
+      "sobraPct": 24.3,
+      "sobraPorHora": 61.22,
+      "minutos": 25,
+      "status": "amarelo",
+      "vendasMes": 10,
+      "sobraMes": 255.1,
+      "faltando": [],
+      "explicacao": [
+        "O que mais pesa no custo é **material**: R$ 60,00 de R$ 79,49 (75%).",
+        "O preço cobre o custo e sobram R$ 25,51 (24% do preço), abaixo da sua meta de 30%.",
+        "Para chegar na meta, o preço seria **R$ 113,56**."
+      ],
+      "insumosMaisCaros": [
+        {
+          "nome": "Câmara de ar performance",
+          "porUnidade": 60
+        }
+      ]
+    },
+    {
+      "id": "b1a2c3d4-0000-4000-8000-000000000001",
+      "nome": "Revisão completa",
+      "preco": 120,
+      "custoTotal": 71.16272189349112,
+      "partes": {
+        "material": 1,
+        "trabalho": 30,
+        "despesas": 40.16,
+        "perdas": 0
+      },
+      "precoMinimo": 71.17,
+      "precoIdeal": 101.67,
+      "sobra": 48.84,
+      "sobraPct": 40.7,
+      "sobraPorHora": 32.56,
+      "minutos": 90,
+      "status": "verde",
+      "vendasMes": 40,
+      "sobraMes": 1953.49,
+      "faltando": [],
+      "explicacao": [
+        "O que mais pesa no custo é **despesas fixas**: R$ 40,16 de R$ 71,16 (56%).",
+        "O material é só 0,8% do preço. Seu tempo e as despesas fixas pesam muito mais, então não dá para calcular o preço só pelo material.",
+        "Preço saudável! Cobre todos os custos e sobram R$ 48,84 (41%) por atendimento. Com 40 atendimentos por mês, sobram cerca de R$ 1.953,49.",
+        "Se precisar dar desconto, dá para baixar até **R$ 101,67** sem sair da sua meta, ou até R$ 71,17 sem ter prejuízo."
+      ],
+      "insumosMaisCaros": [
+        {
+          "nome": "Graxa",
+          "porUnidade": 1
+        }
+      ]
+    }
+  ],
+  "dicas": [
+    {
+      "id": "prejuizo-b1a2c3d4-0000-4000-8000-000000000002",
+      "nivel": "alerta",
+      "titulo": "\"Troca de câmara (comum)\" está dando prejuízo",
+      "texto": "Cada atendimento custa R$ 40,59 e você cobra R$ 40,00: faltam R$ 0,59.",
+      "acao": {
+        "label": "Ver a conta",
+        "to": "/itens/b1a2c3d4-0000-4000-8000-000000000002"
+      }
+    },
+    {
+      "id": "jornada-ociosa",
+      "nivel": "dica",
+      "titulo": "Boa parte da sua jornada fica sem venda",
+      "texto": "Suas vendas ocupam 33% das horas que você trabalha. As despesas fixas são divididas pelas horas da jornada; se o resto do tempo não gera venda, cada serviço precisa pagar mais despesa do que aparece aqui. Vale conferir as horas por semana e as vendas por mês.",
+      "acao": {
+        "label": "Ver ajustes",
+        "to": "/ajustes"
+      }
+    }
+  ]
+}

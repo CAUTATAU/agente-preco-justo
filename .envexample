@@ -1,0 +1,11 @@
+# Chave compartilhada com o backend Node (mesmo valor nos dois serviços). Gere com:
+# python -c "import secrets; print(secrets.token_hex(32))"
+AGENT_KEY=
+
+AWS_REGION=us-east-1
+MODEL_ID=us.anthropic.claude-haiku-4-5-20251001-v1:0
+
+# Produção (Railway): credenciais do usuário IAM do agente, seladas.
+# Local: deixe vazio e use "aws login" (requirements-dev.txt instala o botocore[crt]).
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=

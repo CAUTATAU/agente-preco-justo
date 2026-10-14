@@ -1,0 +1,153 @@
+{
+  "tipo": "servico",
+  "valorHora": null,
+  "horasSemana": 40,
+  "metaSobraPct": 30,
+  "despesas": {
+    "porMes": 895.9,
+    "ferramentasPorMes": 15,
+    "totalPorMes": 910.9,
+    "porHora": 5.26,
+    "horasMes": 173.33,
+    "lista": [
+      {
+        "categoria": "Aluguel",
+        "valor": 600
+      },
+      {
+        "categoria": "Luz / energia",
+        "valor": 120
+      },
+      {
+        "categoria": "Internet / telefone",
+        "valor": 99.9
+      },
+      {
+        "categoria": "Impostos / MEI",
+        "valor": 76
+      }
+    ],
+    "ferramentas": [
+      {
+        "nome": "Pinça e tesoura",
+        "porMes": 15
+      }
+    ]
+  },
+  "resumo": {
+    "sobraMesTotal": 2240.16,
+    "horasOcupadasMes": 55
+  },
+  "itens": [
+    {
+      "id": "4f6a1c2e-0b7d-4c1e-9a55-1d2e3f4a5b6c",
+      "nome": "Buço com cera",
+      "preco": 15,
+      "custoTotal": 2.433798076923077,
+      "partes": {
+        "material": 1.12,
+        "trabalho": 0,
+        "despesas": 1.31,
+        "perdas": 0
+      },
+      "precoMinimo": 2.44,
+      "precoIdeal": 3.48,
+      "sobra": 12.57,
+      "sobraPct": 83.8,
+      "sobraPorHora": 50.26,
+      "minutos": 15,
+      "status": "incompleto",
+      "vendasMes": 40,
+      "sobraMes": 502.65,
+      "faltando": [
+        "o valor da sua hora de trabalho"
+      ],
+      "explicacao": [
+        "A conta ainda está incompleta: falta o valor da sua hora de trabalho. Sem isso, seu trabalho entra de graça no preço.",
+        "O que mais pesa no custo é **despesas fixas**: R$ 1,31 de R$ 2,43 (54%).",
+        "No material, o insumo mais caro é **Cera depilatória** (89% do material). Fique de olho no preço dele."
+      ],
+      "insumosMaisCaros": [
+        {
+          "nome": "Cera depilatória",
+          "porUnidade": 1
+        },
+        {
+          "nome": "Espátula descartável",
+          "porUnidade": 0.12
+        }
+      ]
+    },
+    {
+      "id": "8b2d7e10-5c3a-4f2b-8e61-0a9b8c7d6e5f",
+      "nome": "Design com henna",
+      "preco": 35,
+      "custoTotal": 6.041394230769232,
+      "partes": {
+        "material": 2.1,
+        "trabalho": 0,
+        "despesas": 3.94,
+        "perdas": 0
+      },
+      "precoMinimo": 6.05,
+      "precoIdeal": 8.64,
+      "sobra": 28.96,
+      "sobraPct": 82.7,
+      "sobraPorHora": 38.61,
+      "minutos": 45,
+      "status": "incompleto",
+      "vendasMes": 60,
+      "sobraMes": 1737.52,
+      "faltando": [
+        "o valor da sua hora de trabalho"
+      ],
+      "explicacao": [
+        "A conta ainda está incompleta: falta o valor da sua hora de trabalho. Sem isso, seu trabalho entra de graça no preço.",
+        "O que mais pesa no custo é **despesas fixas**: R$ 3,94 de R$ 6,04 (65%).",
+        "No material, o insumo mais caro é **Henna** (95% do material). Fique de olho no preço dele."
+      ],
+      "insumosMaisCaros": [
+        {
+          "nome": "Henna",
+          "porUnidade": 2
+        },
+        {
+          "nome": "Linha",
+          "porUnidade": 0.1
+        }
+      ]
+    }
+  ],
+  "dicas": [
+    {
+      "id": "sem-hora",
+      "nivel": "alerta",
+      "titulo": "Falta o valor da sua hora",
+      "texto": "Sem isso o app não sabe quanto vale o seu tempo, e o seu trabalho fica de graça no preço. Se não souber, o app ajuda a calcular.",
+      "acao": {
+        "label": "Definir minha hora",
+        "to": "/ajustes?hora=1"
+      }
+    },
+    {
+      "id": "falta-deslocamento",
+      "nivel": "dica",
+      "titulo": "Você se desloca para trabalhar ou comprar?",
+      "texto": "Gasolina, passagem ou aplicativo para atender, entregar ou buscar material também é custo do negócio.",
+      "acao": {
+        "label": "Lançar despesa",
+        "to": "/despesas"
+      }
+    },
+    {
+      "id": "jornada-ociosa",
+      "nivel": "dica",
+      "titulo": "Boa parte da sua jornada fica sem venda",
+      "texto": "Suas vendas ocupam 32% das horas que você trabalha. As despesas fixas são divididas pelas horas da jornada; se o resto do tempo não gera venda, cada serviço precisa pagar mais despesa do que aparece aqui. Vale conferir as horas por semana e as vendas por mês.",
+      "acao": {
+        "label": "Ver ajustes",
+        "to": "/ajustes"
+      }
+    }
+  ]
+}

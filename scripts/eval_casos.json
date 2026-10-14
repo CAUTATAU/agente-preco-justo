@@ -1,0 +1,14 @@
+[
+  { "ficha": "sobrancelhas", "pergunta": "posso baixar o preço do buço para R$ 11?", "ferramentas": ["simulate_price"] },
+  { "ficha": "sobrancelhas", "pergunta": "como estão meus preços?" },
+  { "ficha": "sobrancelhas", "pergunta": "o que estou esquecendo de colocar no preço?", "ferramentas": ["show_tip"] },
+  { "ficha": "sobrancelhas", "pergunta": "não sei quanto vale minha hora. quero ganhar uns 3000 por mês", "ferramentas": ["hourly_rate"] },
+  { "ficha": "sobrancelhas", "pergunta": "muda o preço do buço para 20 e salva", "propostas": "preco" },
+  { "ficha": "sobrancelhas", "pergunta": "me conta uma piada", "propostas": [] },
+  { "ficha": "sobrancelhas-sem-hora", "pergunta": "posso baixar o preço do buço?", "propostas": [] },
+  { "ficha": "bicicletas", "pergunta": "por que a troca de câmara comum está vermelha?" },
+  { "ficha": "bicicletas", "pergunta": "pode sugerir um preço para a troca de câmara comum que não dê prejuízo?", "propostas": "preco" },
+  { "ficha": "bicicletas", "pergunta": "qual serviço me deixa mais dinheiro por hora de trabalho?", "ferramentas": ["compare_items"], "contem": ["performance"] },
+  { "ficha": "brownies", "pergunta": "se eu cobrar 5 reais no brownie tradicional ainda sobra alguma coisa?", "ferramentas": ["simulate_price"] },
+  { "ficha": "brownies", "pergunta": "o gás está entrando no custo dos brownies?" }
+]

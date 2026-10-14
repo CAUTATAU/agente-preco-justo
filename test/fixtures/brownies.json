@@ -1,0 +1,142 @@
+{
+  "tipo": "producao",
+  "valorHora": 12,
+  "horasSemana": 20,
+  "metaSobraPct": 30,
+  "despesas": {
+    "porMes": 60,
+    "ferramentasPorMes": 0,
+    "totalPorMes": 60,
+    "porHora": 0.69,
+    "horasMes": 86.67,
+    "lista": [
+      {
+        "categoria": "Luz / energia",
+        "valor": 60
+      }
+    ],
+    "ferramentas": []
+  },
+  "resumo": {
+    "sobraMesTotal": 1130,
+    "horasOcupadasMes": 15
+  },
+  "itens": [
+    {
+      "id": "c0ffee00-0000-4000-8000-000000000001",
+      "nome": "Brownie tradicional",
+      "preco": 6,
+      "custoTotal": 2.211538461538462,
+      "partes": {
+        "material": 1.36,
+        "trabalho": 0.6,
+        "despesas": 0.03,
+        "perdas": 0.22
+      },
+      "precoMinimo": 2.22,
+      "precoIdeal": 3.16,
+      "sobra": 3.79,
+      "sobraPct": 63.1,
+      "sobraPorHora": 75.77,
+      "minutos": 3,
+      "status": "verde",
+      "vendasMes": 200,
+      "sobraMes": 757.69,
+      "faltando": [],
+      "explicacao": [
+        "O que mais pesa no custo é **material**: R$ 1,36 de R$ 2,21 (61%).",
+        "No material, o insumo mais caro é **Chocolate meio amargo** (39% do material). Fique de olho no preço dele.",
+        "Preço saudável! Cobre todos os custos e sobram R$ 3,79 (63%) por unidade. Com 200 unidades por mês, sobram cerca de R$ 757,69.",
+        "Se precisar dar desconto, dá para baixar até **R$ 3,16** sem sair da sua meta, ou até R$ 2,22 sem ter prejuízo."
+      ],
+      "insumosMaisCaros": [
+        {
+          "nome": "Chocolate meio amargo",
+          "porUnidade": 0.53
+        },
+        {
+          "nome": "Nescau",
+          "porUnidade": 0.5
+        },
+        {
+          "nome": "Gás",
+          "porUnidade": 0.23
+        }
+      ]
+    },
+    {
+      "id": "c0ffee00-0000-4000-8000-000000000002",
+      "nome": "Brownie recheado",
+      "preco": 9,
+      "custoTotal": 2.794871794871795,
+      "partes": {
+        "material": 1.6,
+        "trabalho": 1,
+        "despesas": 0.06,
+        "perdas": 0.14
+      },
+      "precoMinimo": 2.8,
+      "precoIdeal": 4,
+      "sobra": 6.21,
+      "sobraPct": 68.9,
+      "sobraPorHora": 74.46,
+      "minutos": 5,
+      "status": "verde",
+      "vendasMes": 60,
+      "sobraMes": 372.31,
+      "faltando": [],
+      "explicacao": [
+        "O que mais pesa no custo é **material**: R$ 1,60 de R$ 2,79 (57%).",
+        "No material, o insumo mais caro é **Chocolate meio amargo** (58% do material). Fique de olho no preço dele.",
+        "Preço saudável! Cobre todos os custos e sobram R$ 6,21 (69%) por unidade. Com 60 unidades por mês, sobram cerca de R$ 372,31.",
+        "Se precisar dar desconto, dá para baixar até **R$ 4,00** sem sair da sua meta, ou até R$ 2,80 sem ter prejuízo."
+      ],
+      "insumosMaisCaros": [
+        {
+          "nome": "Chocolate meio amargo",
+          "porUnidade": 0.93
+        },
+        {
+          "nome": "Nescau",
+          "porUnidade": 0.33
+        },
+        {
+          "nome": "Gás",
+          "porUnidade": 0.23
+        }
+      ]
+    }
+  ],
+  "dicas": [
+    {
+      "id": "falta-ferramenta",
+      "nivel": "dica",
+      "titulo": "E o desgaste das ferramentas?",
+      "texto": "Ferramentas e equipamentos se gastam e precisam ser trocados. Cadastre quanto custa repor e de quanto em quanto tempo, que o app divide esse valor nos seus preços.",
+      "acao": {
+        "label": "Cadastrar ferramenta",
+        "to": "/despesas?aba=ferramentas"
+      }
+    },
+    {
+      "id": "falta-deslocamento",
+      "nivel": "dica",
+      "titulo": "Você se desloca para trabalhar ou comprar?",
+      "texto": "Gasolina, passagem ou aplicativo para atender, entregar ou buscar material também é custo do negócio.",
+      "acao": {
+        "label": "Lançar despesa",
+        "to": "/despesas"
+      }
+    },
+    {
+      "id": "jornada-ociosa",
+      "nivel": "dica",
+      "titulo": "Boa parte da sua jornada fica sem venda",
+      "texto": "Suas vendas ocupam 17% das horas que você trabalha. As despesas fixas são divididas pelas horas da jornada; se o resto do tempo não gera venda, cada produto precisa pagar mais despesa do que aparece aqui. Vale conferir as horas por semana e as vendas por mês.",
+      "acao": {
+        "label": "Ver ajustes",
+        "to": "/ajustes"
+      }
+    }
+  ]
+}

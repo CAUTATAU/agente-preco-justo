@@ -1,0 +1,6 @@
+-r requirements.txt
+pytest==9.1.1
+httpx==0.28.1
+python-dotenv  # uvicorn --env-file .env
+# Só local: permite ao boto3 usar a sessão do "aws login". No Railway o agente usa o usuário IAM.
+botocore[crt]

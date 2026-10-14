@@ -1,0 +1,5 @@
+# Versões validadas na Fase 0/1 (2026-10-14)
+strands-agents==1.60.0
+boto3==1.43.114
+fastapi==0.143.1
+uvicorn==0.54.0
