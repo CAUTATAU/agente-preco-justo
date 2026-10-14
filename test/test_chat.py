@@ -64,7 +64,7 @@ def agente(monkeypatch):
 
 
 def pedido(**extra) -> dict:
-    return {"consentimento": True, "contexto": carregar("sobrancelhas"), "pergunta": "posso baixar o buço?", **extra}
+    return {"contexto": carregar("sobrancelhas"), "pergunta": "posso baixar o buço?", **extra}
 
 
 def test_health_nao_exige_chave(cliente):
@@ -78,19 +78,12 @@ def test_sem_a_chave_do_node_e_403(cliente, agente, cabecalhos):
     assert agente.chamadas == []
 
 
-def test_sem_consentimento_nao_chama_o_modelo(cliente, agente):
-    r = cliente.post("/chat", json=pedido(consentimento=False), headers=CHAVE)
-    assert r.status_code == 403
-    assert "autorize" in r.json()["error"]
-    assert agente.chamadas == []
-
-
 @pytest.mark.parametrize(
     "corpo",
     [
         pedido(historico=[{"papel": "usuario", "texto": "oi"}] * 7),
         pedido(pergunta=""),
-        {"consentimento": True, "pergunta": "oi"},
+        {"pergunta": "oi"},  # sem contexto
     ],
 )
 def test_corpo_invalido_e_400_no_formato_do_node(cliente, agente, corpo):

@@ -6,7 +6,7 @@ from conftest import carregar
 
 
 def pedido(**extra) -> dict:
-    return {"consentimento": True, "contexto": carregar("sobrancelhas"), "pergunta": "posso baixar o buço?", **extra}
+    return {"contexto": carregar("sobrancelhas"), "pergunta": "posso baixar o buço?", **extra}
 
 
 @pytest.mark.parametrize("nome", ["sobrancelhas", "bicicletas", "brownies", "sobrancelhas-sem-hora"])

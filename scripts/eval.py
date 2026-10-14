@@ -150,7 +150,7 @@ def main_eval() -> int:
     for n, caso in enumerate(casos):
         if n:
             time.sleep(6)  # a cota do Haiku 4.5 é 10 chamadas/min; sem pausa a própria rodada estoura
-        pedido ={"consentimento": True, "contexto": carregar_ficha(caso["ficha"]), "pergunta": caso["pergunta"]}
+        pedido = {"contexto": carregar_ficha(caso["ficha"]), "pergunta": caso["pergunta"]}
         r = cliente.post("/chat", json=pedido, headers={"X-Agent-Key": main.AGENT_KEY})
         if r.status_code != 200:
             reprovados += 1

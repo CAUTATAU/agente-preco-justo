@@ -29,6 +29,7 @@ No backend Node, use `AGENT_URL=http://localhost:8000` e a mesma `AGENT_KEY`.
 | `.venv/Scripts/python -m pytest -q` | Testes (não chamam o Bedrock; também rodam no CI) |
 | `.venv/Scripts/python scripts/eval.py` | 12 perguntas no Bedrock real (~US$ 0,10). Rode antes de mudar prompt, modelo ou parâmetros |
 | `docker build -t agente-preco-justo .` | Imagem usada no Railway |
+| Postman | Importe [`postman/agente-preco-justo.postman_collection.json`](postman/agente-preco-justo.postman_collection.json): pedidos com as fichas de teste e os erros esperados. A chave da coleção é a do teste local: suba o uvicorn com `AGENT_KEY='chave-local-de-teste-com-mais-de-32-caracteres'` |
 
 ## Contrato da API
 
@@ -38,7 +39,6 @@ Cabeçalhos: `X-Agent-Key: <AGENT_KEY>` e `Content-Type: application/json`. Sem 
 
 ```jsonc
 {
-  "consentimento": true,          // a pessoa autorizou enviar a ficha (RNF06); false → 403
   "contexto": { ... },            // resumo já calculado pelo PWA: veja montarContexto abaixo
   "historico": [                  // até 6 mensagens anteriores, só texto
     { "papel": "usuario", "texto": "..." },
@@ -68,7 +68,7 @@ Exemplos completos de `contexto`, gerados pelo `calc.ts`/`advisor.ts` reais, est
 | HTTP | Quando |
 | --- | --- |
 | 400 | Corpo inválido ou fora dos limites |
-| 403 | Sem `X-Agent-Key` válida ou sem consentimento |
+| 403 | Sem `X-Agent-Key` válida |
 | 503 | Bedrock fora, cota estourada (10 chamadas/min no Haiku 4.5) ou tempo esgotado (60 s) |
 
 Se o modelo recusar a pergunta, a resposta é 200 com um texto amigável e sem propostas.
@@ -78,7 +78,7 @@ Se o modelo recusar a pergunta, a resposta é 200 com um texto amigável e sem p
 ### Regras para o front (PWA)
 
 1. Sem internet (`useOnline`), o chat fica desligado com um aviso; o resto do app continua funcionando.
-2. Consentimento: chave desligada por padrão, pedida no primeiro uso do chat e repetida em Ajustes. Fica salva só no aparelho e nunca liga sozinha. O texto deve dizer que o resumo da ficha (nomes de itens e insumos e números, sem o nome do negócio) e as perguntas vão para a AWS (Amazon Bedrock, EUA).
+2. Aceite: a API não pede consentimento a cada pergunta. Por decisão da equipe, o aceite fica no **termo de uso do cadastro**, que precisa dizer que o resumo da ficha (nomes de itens e insumos e números, sem o nome do negócio) e as perguntas vão para a AWS (Amazon Bedrock, EUA). Isso muda o RNF06 do documento de requisitos e o termo com os negócios-piloto.
 3. Monte o `contexto` na hora da pergunta, com o `useCalc()` atual.
 4. Cartão de proposta: mostre o "antes → depois" recalculado no `calc.ts`. No **Aceitar**, valide com `itemSchema` / `businessSchema` e só então chame `saveItem({...item, price: valor})` ou `setBusiness({...business, hourlyRate: valor, weeklyHours: horasSemana})`. Ignore a proposta se o `itemId` não existir mais.
 5. Em `acoes`, só navegue se o `to` for igual ao `action.to` de uma dica do próprio app.

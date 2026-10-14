@@ -1,0 +1,275 @@
+{
+  "info": {
+    "name": "Agente Preço Justo (local)",
+    "description": "Rode o agente com uvicorn na porta 8000 (veja o README). Edite o campo \"pergunta\" do corpo à vontade. Cada pergunta chama o Bedrock real (menos de 1 centavo).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000"
+    },
+    {
+      "key": "agentKey",
+      "value": "chave-local-de-teste-com-mais-de-32-caracteres"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/health"
+      }
+    },
+    {
+      "name": "Perguntas",
+      "item": [
+        {
+          "name": "Designer de sobrancelhas: e se eu cobrar R$ 11?",
+          "request": {
+            "description": "",
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Agent-Key",
+                "value": "{{agentKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/chat",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contexto\": {\n    \"tipo\": \"servico\",\n    \"valorHora\": 25,\n    \"horasSemana\": 40,\n    \"metaSobraPct\": 30,\n    \"despesas\": {\n      \"porMes\": 895.9,\n      \"ferramentasPorMes\": 15,\n      \"totalPorMes\": 910.9,\n      \"porHora\": 5.26,\n      \"horasMes\": 173.33,\n      \"lista\": [\n        {\n          \"categoria\": \"Aluguel\",\n          \"valor\": 600\n        },\n        {\n          \"categoria\": \"Luz / energia\",\n          \"valor\": 120\n        },\n        {\n          \"categoria\": \"Internet / telefone\",\n          \"valor\": 99.9\n        },\n        {\n          \"categoria\": \"Impostos / MEI\",\n          \"valor\": 76\n        }\n      ],\n      \"ferramentas\": [\n        {\n          \"nome\": \"Pinça e tesoura\",\n          \"porMes\": 15\n        }\n      ]\n    },\n    \"resumo\": {\n      \"sobraMesTotal\": 865.16,\n      \"horasOcupadasMes\": 55\n    },\n    \"itens\": [\n      {\n        \"id\": \"8b2d7e10-5c3a-4f2b-8e61-0a9b8c7d6e5f\",\n        \"nome\": \"Design com henna\",\n        \"preco\": 35,\n        \"custoTotal\": 24.79139423076923,\n        \"partes\": {\n          \"material\": 2.1,\n          \"trabalho\": 18.75,\n          \"despesas\": 3.94,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 24.8,\n        \"precoIdeal\": 35.42,\n        \"sobra\": 10.21,\n        \"sobraPct\": 29.2,\n        \"sobraPorHora\": 13.61,\n        \"minutos\": 45,\n        \"status\": \"amarelo\",\n        \"vendasMes\": 60,\n        \"sobraMes\": 612.52,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **seu trabalho**: R$ 18,75 de R$ 24,79 (76%).\",\n          \"No material, o insumo mais caro é **Henna** (95% do material). Fique de olho no preço dele.\",\n          \"O preço cobre o custo e sobram R$ 10,21 (29% do preço), abaixo da sua meta de 30%.\",\n          \"Para chegar na meta, o preço seria **R$ 35,42**.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Henna\",\n            \"porUnidade\": 2\n          },\n          {\n            \"nome\": \"Linha\",\n            \"porUnidade\": 0.1\n          }\n        ]\n      },\n      {\n        \"id\": \"4f6a1c2e-0b7d-4c1e-9a55-1d2e3f4a5b6c\",\n        \"nome\": \"Buço com cera\",\n        \"preco\": 15,\n        \"custoTotal\": 8.683798076923077,\n        \"partes\": {\n          \"material\": 1.12,\n          \"trabalho\": 6.25,\n          \"despesas\": 1.31,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 8.69,\n        \"precoIdeal\": 12.41,\n        \"sobra\": 6.32,\n        \"sobraPct\": 42.1,\n        \"sobraPorHora\": 25.26,\n        \"minutos\": 15,\n        \"status\": \"verde\",\n        \"vendasMes\": 40,\n        \"sobraMes\": 252.65,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **seu trabalho**: R$ 6,25 de R$ 8,68 (72%).\",\n          \"No material, o insumo mais caro é **Cera depilatória** (89% do material). Fique de olho no preço dele.\",\n          \"Preço saudável! Cobre todos os custos e sobram R$ 6,32 (42%) por atendimento. Com 40 atendimentos por mês, sobram cerca de R$ 252,65.\",\n          \"Se precisar dar desconto, dá para baixar até **R$ 12,41** sem sair da sua meta, ou até R$ 8,69 sem ter prejuízo.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Cera depilatória\",\n            \"porUnidade\": 1\n          },\n          {\n            \"nome\": \"Espátula descartável\",\n            \"porUnidade\": 0.12\n          }\n        ]\n      }\n    ],\n    \"dicas\": [\n      {\n        \"id\": \"falta-deslocamento\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Você se desloca para trabalhar ou comprar?\",\n        \"texto\": \"Gasolina, passagem ou aplicativo para atender, entregar ou buscar material também é custo do negócio.\",\n        \"acao\": {\n          \"label\": \"Lançar despesa\",\n          \"to\": \"/despesas\"\n        }\n      },\n      {\n        \"id\": \"jornada-ociosa\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Boa parte da sua jornada fica sem venda\",\n        \"texto\": \"Suas vendas ocupam 32% das horas que você trabalha. As despesas fixas são divididas pelas horas da jornada; se o resto do tempo não gera venda, cada serviço precisa pagar mais despesa do que aparece aqui. Vale conferir as horas por semana e as vendas por mês.\",\n        \"acao\": {\n          \"label\": \"Ver ajustes\",\n          \"to\": \"/ajustes\"\n        }\n      }\n    ]\n  },\n  \"historico\": [],\n  \"pergunta\": \"posso baixar o preço do buço para R$ 11?\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Designer de sobrancelhas: continuação (com histórico)",
+          "request": {
+            "description": "O histórico tem a pergunta anterior; o agente deve entender que 13 é o preço do buço.",
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Agent-Key",
+                "value": "{{agentKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/chat",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contexto\": {\n    \"tipo\": \"servico\",\n    \"valorHora\": 25,\n    \"horasSemana\": 40,\n    \"metaSobraPct\": 30,\n    \"despesas\": {\n      \"porMes\": 895.9,\n      \"ferramentasPorMes\": 15,\n      \"totalPorMes\": 910.9,\n      \"porHora\": 5.26,\n      \"horasMes\": 173.33,\n      \"lista\": [\n        {\n          \"categoria\": \"Aluguel\",\n          \"valor\": 600\n        },\n        {\n          \"categoria\": \"Luz / energia\",\n          \"valor\": 120\n        },\n        {\n          \"categoria\": \"Internet / telefone\",\n          \"valor\": 99.9\n        },\n        {\n          \"categoria\": \"Impostos / MEI\",\n          \"valor\": 76\n        }\n      ],\n      \"ferramentas\": [\n        {\n          \"nome\": \"Pinça e tesoura\",\n          \"porMes\": 15\n        }\n      ]\n    },\n    \"resumo\": {\n      \"sobraMesTotal\": 865.16,\n      \"horasOcupadasMes\": 55\n    },\n    \"itens\": [\n      {\n        \"id\": \"8b2d7e10-5c3a-4f2b-8e61-0a9b8c7d6e5f\",\n        \"nome\": \"Design com henna\",\n        \"preco\": 35,\n        \"custoTotal\": 24.79139423076923,\n        \"partes\": {\n          \"material\": 2.1,\n          \"trabalho\": 18.75,\n          \"despesas\": 3.94,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 24.8,\n        \"precoIdeal\": 35.42,\n        \"sobra\": 10.21,\n        \"sobraPct\": 29.2,\n        \"sobraPorHora\": 13.61,\n        \"minutos\": 45,\n        \"status\": \"amarelo\",\n        \"vendasMes\": 60,\n        \"sobraMes\": 612.52,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **seu trabalho**: R$ 18,75 de R$ 24,79 (76%).\",\n          \"No material, o insumo mais caro é **Henna** (95% do material). Fique de olho no preço dele.\",\n          \"O preço cobre o custo e sobram R$ 10,21 (29% do preço), abaixo da sua meta de 30%.\",\n          \"Para chegar na meta, o preço seria **R$ 35,42**.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Henna\",\n            \"porUnidade\": 2\n          },\n          {\n            \"nome\": \"Linha\",\n            \"porUnidade\": 0.1\n          }\n        ]\n      },\n      {\n        \"id\": \"4f6a1c2e-0b7d-4c1e-9a55-1d2e3f4a5b6c\",\n        \"nome\": \"Buço com cera\",\n        \"preco\": 15,\n        \"custoTotal\": 8.683798076923077,\n        \"partes\": {\n          \"material\": 1.12,\n          \"trabalho\": 6.25,\n          \"despesas\": 1.31,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 8.69,\n        \"precoIdeal\": 12.41,\n        \"sobra\": 6.32,\n        \"sobraPct\": 42.1,\n        \"sobraPorHora\": 25.26,\n        \"minutos\": 15,\n        \"status\": \"verde\",\n        \"vendasMes\": 40,\n        \"sobraMes\": 252.65,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **seu trabalho**: R$ 6,25 de R$ 8,68 (72%).\",\n          \"No material, o insumo mais caro é **Cera depilatória** (89% do material). Fique de olho no preço dele.\",\n          \"Preço saudável! Cobre todos os custos e sobram R$ 6,32 (42%) por atendimento. Com 40 atendimentos por mês, sobram cerca de R$ 252,65.\",\n          \"Se precisar dar desconto, dá para baixar até **R$ 12,41** sem sair da sua meta, ou até R$ 8,69 sem ter prejuízo.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Cera depilatória\",\n            \"porUnidade\": 1\n          },\n          {\n            \"nome\": \"Espátula descartável\",\n            \"porUnidade\": 0.12\n          }\n        ]\n      }\n    ],\n    \"dicas\": [\n      {\n        \"id\": \"falta-deslocamento\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Você se desloca para trabalhar ou comprar?\",\n        \"texto\": \"Gasolina, passagem ou aplicativo para atender, entregar ou buscar material também é custo do negócio.\",\n        \"acao\": {\n          \"label\": \"Lançar despesa\",\n          \"to\": \"/despesas\"\n        }\n      },\n      {\n        \"id\": \"jornada-ociosa\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Boa parte da sua jornada fica sem venda\",\n        \"texto\": \"Suas vendas ocupam 32% das horas que você trabalha. As despesas fixas são divididas pelas horas da jornada; se o resto do tempo não gera venda, cada serviço precisa pagar mais despesa do que aparece aqui. Vale conferir as horas por semana e as vendas por mês.\",\n        \"acao\": {\n          \"label\": \"Ver ajustes\",\n          \"to\": \"/ajustes\"\n        }\n      }\n    ]\n  },\n  \"historico\": [\n    {\n      \"papel\": \"usuario\",\n      \"texto\": \"posso baixar o preço do buço para R$ 11?\"\n    },\n    {\n      \"papel\": \"assistente\",\n      \"texto\": \"Com **R$ 11,00**, sobram R$ 2,32 por atendimento (21,1%), abaixo da sua meta de 30%. No mês sobrariam R$ 92,65 no total. Para manter a meta, o preço seria **R$ 12,41**.\"\n    }\n  ],\n  \"pergunta\": \"e se for 13?\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Designer de sobrancelhas: pedir para mudar o preço (gera cartão)",
+          "request": {
+            "description": "",
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Agent-Key",
+                "value": "{{agentKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/chat",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contexto\": {\n    \"tipo\": \"servico\",\n    \"valorHora\": 25,\n    \"horasSemana\": 40,\n    \"metaSobraPct\": 30,\n    \"despesas\": {\n      \"porMes\": 895.9,\n      \"ferramentasPorMes\": 15,\n      \"totalPorMes\": 910.9,\n      \"porHora\": 5.26,\n      \"horasMes\": 173.33,\n      \"lista\": [\n        {\n          \"categoria\": \"Aluguel\",\n          \"valor\": 600\n        },\n        {\n          \"categoria\": \"Luz / energia\",\n          \"valor\": 120\n        },\n        {\n          \"categoria\": \"Internet / telefone\",\n          \"valor\": 99.9\n        },\n        {\n          \"categoria\": \"Impostos / MEI\",\n          \"valor\": 76\n        }\n      ],\n      \"ferramentas\": [\n        {\n          \"nome\": \"Pinça e tesoura\",\n          \"porMes\": 15\n        }\n      ]\n    },\n    \"resumo\": {\n      \"sobraMesTotal\": 865.16,\n      \"horasOcupadasMes\": 55\n    },\n    \"itens\": [\n      {\n        \"id\": \"8b2d7e10-5c3a-4f2b-8e61-0a9b8c7d6e5f\",\n        \"nome\": \"Design com henna\",\n        \"preco\": 35,\n        \"custoTotal\": 24.79139423076923,\n        \"partes\": {\n          \"material\": 2.1,\n          \"trabalho\": 18.75,\n          \"despesas\": 3.94,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 24.8,\n        \"precoIdeal\": 35.42,\n        \"sobra\": 10.21,\n        \"sobraPct\": 29.2,\n        \"sobraPorHora\": 13.61,\n        \"minutos\": 45,\n        \"status\": \"amarelo\",\n        \"vendasMes\": 60,\n        \"sobraMes\": 612.52,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **seu trabalho**: R$ 18,75 de R$ 24,79 (76%).\",\n          \"No material, o insumo mais caro é **Henna** (95% do material). Fique de olho no preço dele.\",\n          \"O preço cobre o custo e sobram R$ 10,21 (29% do preço), abaixo da sua meta de 30%.\",\n          \"Para chegar na meta, o preço seria **R$ 35,42**.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Henna\",\n            \"porUnidade\": 2\n          },\n          {\n            \"nome\": \"Linha\",\n            \"porUnidade\": 0.1\n          }\n        ]\n      },\n      {\n        \"id\": \"4f6a1c2e-0b7d-4c1e-9a55-1d2e3f4a5b6c\",\n        \"nome\": \"Buço com cera\",\n        \"preco\": 15,\n        \"custoTotal\": 8.683798076923077,\n        \"partes\": {\n          \"material\": 1.12,\n          \"trabalho\": 6.25,\n          \"despesas\": 1.31,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 8.69,\n        \"precoIdeal\": 12.41,\n        \"sobra\": 6.32,\n        \"sobraPct\": 42.1,\n        \"sobraPorHora\": 25.26,\n        \"minutos\": 15,\n        \"status\": \"verde\",\n        \"vendasMes\": 40,\n        \"sobraMes\": 252.65,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **seu trabalho**: R$ 6,25 de R$ 8,68 (72%).\",\n          \"No material, o insumo mais caro é **Cera depilatória** (89% do material). Fique de olho no preço dele.\",\n          \"Preço saudável! Cobre todos os custos e sobram R$ 6,32 (42%) por atendimento. Com 40 atendimentos por mês, sobram cerca de R$ 252,65.\",\n          \"Se precisar dar desconto, dá para baixar até **R$ 12,41** sem sair da sua meta, ou até R$ 8,69 sem ter prejuízo.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Cera depilatória\",\n            \"porUnidade\": 1\n          },\n          {\n            \"nome\": \"Espátula descartável\",\n            \"porUnidade\": 0.12\n          }\n        ]\n      }\n    ],\n    \"dicas\": [\n      {\n        \"id\": \"falta-deslocamento\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Você se desloca para trabalhar ou comprar?\",\n        \"texto\": \"Gasolina, passagem ou aplicativo para atender, entregar ou buscar material também é custo do negócio.\",\n        \"acao\": {\n          \"label\": \"Lançar despesa\",\n          \"to\": \"/despesas\"\n        }\n      },\n      {\n        \"id\": \"jornada-ociosa\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Boa parte da sua jornada fica sem venda\",\n        \"texto\": \"Suas vendas ocupam 32% das horas que você trabalha. As despesas fixas são divididas pelas horas da jornada; se o resto do tempo não gera venda, cada serviço precisa pagar mais despesa do que aparece aqui. Vale conferir as horas por semana e as vendas por mês.\",\n        \"acao\": {\n          \"label\": \"Ver ajustes\",\n          \"to\": \"/ajustes\"\n        }\n      }\n    ]\n  },\n  \"historico\": [],\n  \"pergunta\": \"muda o preço do buço para 20\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Designer de sobrancelhas: o que estou esquecendo?",
+          "request": {
+            "description": "",
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Agent-Key",
+                "value": "{{agentKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/chat",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contexto\": {\n    \"tipo\": \"servico\",\n    \"valorHora\": 25,\n    \"horasSemana\": 40,\n    \"metaSobraPct\": 30,\n    \"despesas\": {\n      \"porMes\": 895.9,\n      \"ferramentasPorMes\": 15,\n      \"totalPorMes\": 910.9,\n      \"porHora\": 5.26,\n      \"horasMes\": 173.33,\n      \"lista\": [\n        {\n          \"categoria\": \"Aluguel\",\n          \"valor\": 600\n        },\n        {\n          \"categoria\": \"Luz / energia\",\n          \"valor\": 120\n        },\n        {\n          \"categoria\": \"Internet / telefone\",\n          \"valor\": 99.9\n        },\n        {\n          \"categoria\": \"Impostos / MEI\",\n          \"valor\": 76\n        }\n      ],\n      \"ferramentas\": [\n        {\n          \"nome\": \"Pinça e tesoura\",\n          \"porMes\": 15\n        }\n      ]\n    },\n    \"resumo\": {\n      \"sobraMesTotal\": 865.16,\n      \"horasOcupadasMes\": 55\n    },\n    \"itens\": [\n      {\n        \"id\": \"8b2d7e10-5c3a-4f2b-8e61-0a9b8c7d6e5f\",\n        \"nome\": \"Design com henna\",\n        \"preco\": 35,\n        \"custoTotal\": 24.79139423076923,\n        \"partes\": {\n          \"material\": 2.1,\n          \"trabalho\": 18.75,\n          \"despesas\": 3.94,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 24.8,\n        \"precoIdeal\": 35.42,\n        \"sobra\": 10.21,\n        \"sobraPct\": 29.2,\n        \"sobraPorHora\": 13.61,\n        \"minutos\": 45,\n        \"status\": \"amarelo\",\n        \"vendasMes\": 60,\n        \"sobraMes\": 612.52,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **seu trabalho**: R$ 18,75 de R$ 24,79 (76%).\",\n          \"No material, o insumo mais caro é **Henna** (95% do material). Fique de olho no preço dele.\",\n          \"O preço cobre o custo e sobram R$ 10,21 (29% do preço), abaixo da sua meta de 30%.\",\n          \"Para chegar na meta, o preço seria **R$ 35,42**.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Henna\",\n            \"porUnidade\": 2\n          },\n          {\n            \"nome\": \"Linha\",\n            \"porUnidade\": 0.1\n          }\n        ]\n      },\n      {\n        \"id\": \"4f6a1c2e-0b7d-4c1e-9a55-1d2e3f4a5b6c\",\n        \"nome\": \"Buço com cera\",\n        \"preco\": 15,\n        \"custoTotal\": 8.683798076923077,\n        \"partes\": {\n          \"material\": 1.12,\n          \"trabalho\": 6.25,\n          \"despesas\": 1.31,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 8.69,\n        \"precoIdeal\": 12.41,\n        \"sobra\": 6.32,\n        \"sobraPct\": 42.1,\n        \"sobraPorHora\": 25.26,\n        \"minutos\": 15,\n        \"status\": \"verde\",\n        \"vendasMes\": 40,\n        \"sobraMes\": 252.65,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **seu trabalho**: R$ 6,25 de R$ 8,68 (72%).\",\n          \"No material, o insumo mais caro é **Cera depilatória** (89% do material). Fique de olho no preço dele.\",\n          \"Preço saudável! Cobre todos os custos e sobram R$ 6,32 (42%) por atendimento. Com 40 atendimentos por mês, sobram cerca de R$ 252,65.\",\n          \"Se precisar dar desconto, dá para baixar até **R$ 12,41** sem sair da sua meta, ou até R$ 8,69 sem ter prejuízo.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Cera depilatória\",\n            \"porUnidade\": 1\n          },\n          {\n            \"nome\": \"Espátula descartável\",\n            \"porUnidade\": 0.12\n          }\n        ]\n      }\n    ],\n    \"dicas\": [\n      {\n        \"id\": \"falta-deslocamento\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Você se desloca para trabalhar ou comprar?\",\n        \"texto\": \"Gasolina, passagem ou aplicativo para atender, entregar ou buscar material também é custo do negócio.\",\n        \"acao\": {\n          \"label\": \"Lançar despesa\",\n          \"to\": \"/despesas\"\n        }\n      },\n      {\n        \"id\": \"jornada-ociosa\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Boa parte da sua jornada fica sem venda\",\n        \"texto\": \"Suas vendas ocupam 32% das horas que você trabalha. As despesas fixas são divididas pelas horas da jornada; se o resto do tempo não gera venda, cada serviço precisa pagar mais despesa do que aparece aqui. Vale conferir as horas por semana e as vendas por mês.\",\n        \"acao\": {\n          \"label\": \"Ver ajustes\",\n          \"to\": \"/ajustes\"\n        }\n      }\n    ]\n  },\n  \"historico\": [],\n  \"pergunta\": \"o que estou esquecendo de colocar no preço?\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Oficina: qual serviço rende mais por hora?",
+          "request": {
+            "description": "",
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Agent-Key",
+                "value": "{{agentKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/chat",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contexto\": {\n    \"tipo\": \"servico\",\n    \"valorHora\": 20,\n    \"horasSemana\": 52,\n    \"metaSobraPct\": 30,\n    \"despesas\": {\n      \"porMes\": 6000,\n      \"ferramentasPorMes\": 33.33,\n      \"totalPorMes\": 6033.33,\n      \"porHora\": 26.78,\n      \"horasMes\": 225.33,\n      \"lista\": [\n        {\n          \"categoria\": \"Tudo junto (não sei separar)\",\n          \"valor\": 6000\n        }\n      ],\n      \"ferramentas\": [\n        {\n          \"nome\": \"Jogo de chaves\",\n          \"porMes\": 33.33\n        }\n      ]\n    },\n    \"resumo\": {\n      \"sobraMesTotal\": 2190.84,\n      \"horasOcupadasMes\": 74.17\n    },\n    \"itens\": [\n      {\n        \"id\": \"b1a2c3d4-0000-4000-8000-000000000002\",\n        \"nome\": \"Troca de câmara (comum)\",\n        \"preco\": 40,\n        \"custoTotal\": 40.59171597633136,\n        \"partes\": {\n          \"material\": 25,\n          \"trabalho\": 6.67,\n          \"despesas\": 8.93,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 40.6,\n        \"precoIdeal\": 57.99,\n        \"sobra\": -0.59,\n        \"sobraPct\": -1.5,\n        \"sobraPorHora\": -1.78,\n        \"minutos\": 20,\n        \"status\": \"vermelho\",\n        \"vendasMes\": 30,\n        \"sobraMes\": -17.75,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **material**: R$ 25,00 de R$ 40,59 (62%).\",\n          \"Hoje você cobra R$ 40,00, mas cada atendimento custa R$ 40,59. Você paga R$ 0,59 para trabalhar. Com 30 atendimentos por mês, são R$ 17,75 a menos no mês.\",\n          \"Para não ter prejuízo, cobre pelo menos **R$ 40,60**. Para ter a sobra de 30% que você definiu, **R$ 57,99**.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Câmara de ar comum\",\n            \"porUnidade\": 25\n          }\n        ]\n      },\n      {\n        \"id\": \"b1a2c3d4-0000-4000-8000-000000000003\",\n        \"nome\": \"Troca de câmara (performance)\",\n        \"preco\": 105,\n        \"custoTotal\": 79.48964497041419,\n        \"partes\": {\n          \"material\": 60,\n          \"trabalho\": 8.33,\n          \"despesas\": 11.16,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 79.49,\n        \"precoIdeal\": 113.56,\n        \"sobra\": 25.51,\n        \"sobraPct\": 24.3,\n        \"sobraPorHora\": 61.22,\n        \"minutos\": 25,\n        \"status\": \"amarelo\",\n        \"vendasMes\": 10,\n        \"sobraMes\": 255.1,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **material**: R$ 60,00 de R$ 79,49 (75%).\",\n          \"O preço cobre o custo e sobram R$ 25,51 (24% do preço), abaixo da sua meta de 30%.\",\n          \"Para chegar na meta, o preço seria **R$ 113,56**.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Câmara de ar performance\",\n            \"porUnidade\": 60\n          }\n        ]\n      },\n      {\n        \"id\": \"b1a2c3d4-0000-4000-8000-000000000001\",\n        \"nome\": \"Revisão completa\",\n        \"preco\": 120,\n        \"custoTotal\": 71.16272189349112,\n        \"partes\": {\n          \"material\": 1,\n          \"trabalho\": 30,\n          \"despesas\": 40.16,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 71.17,\n        \"precoIdeal\": 101.67,\n        \"sobra\": 48.84,\n        \"sobraPct\": 40.7,\n        \"sobraPorHora\": 32.56,\n        \"minutos\": 90,\n        \"status\": \"verde\",\n        \"vendasMes\": 40,\n        \"sobraMes\": 1953.49,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **despesas fixas**: R$ 40,16 de R$ 71,16 (56%).\",\n          \"O material é só 0,8% do preço. Seu tempo e as despesas fixas pesam muito mais, então não dá para calcular o preço só pelo material.\",\n          \"Preço saudável! Cobre todos os custos e sobram R$ 48,84 (41%) por atendimento. Com 40 atendimentos por mês, sobram cerca de R$ 1.953,49.\",\n          \"Se precisar dar desconto, dá para baixar até **R$ 101,67** sem sair da sua meta, ou até R$ 71,17 sem ter prejuízo.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Graxa\",\n            \"porUnidade\": 1\n          }\n        ]\n      }\n    ],\n    \"dicas\": [\n      {\n        \"id\": \"prejuizo-b1a2c3d4-0000-4000-8000-000000000002\",\n        \"nivel\": \"alerta\",\n        \"titulo\": \"\\\"Troca de câmara (comum)\\\" está dando prejuízo\",\n        \"texto\": \"Cada atendimento custa R$ 40,59 e você cobra R$ 40,00: faltam R$ 0,59.\",\n        \"acao\": {\n          \"label\": \"Ver a conta\",\n          \"to\": \"/itens/b1a2c3d4-0000-4000-8000-000000000002\"\n        }\n      },\n      {\n        \"id\": \"jornada-ociosa\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Boa parte da sua jornada fica sem venda\",\n        \"texto\": \"Suas vendas ocupam 33% das horas que você trabalha. As despesas fixas são divididas pelas horas da jornada; se o resto do tempo não gera venda, cada serviço precisa pagar mais despesa do que aparece aqui. Vale conferir as horas por semana e as vendas por mês.\",\n        \"acao\": {\n          \"label\": \"Ver ajustes\",\n          \"to\": \"/ajustes\"\n        }\n      }\n    ]\n  },\n  \"historico\": [],\n  \"pergunta\": \"qual serviço me deixa mais dinheiro por hora de trabalho?\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Brownies: e se eu cobrar R$ 5?",
+          "request": {
+            "description": "",
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Agent-Key",
+                "value": "{{agentKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/chat",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contexto\": {\n    \"tipo\": \"producao\",\n    \"valorHora\": 12,\n    \"horasSemana\": 20,\n    \"metaSobraPct\": 30,\n    \"despesas\": {\n      \"porMes\": 60,\n      \"ferramentasPorMes\": 0,\n      \"totalPorMes\": 60,\n      \"porHora\": 0.69,\n      \"horasMes\": 86.67,\n      \"lista\": [\n        {\n          \"categoria\": \"Luz / energia\",\n          \"valor\": 60\n        }\n      ],\n      \"ferramentas\": []\n    },\n    \"resumo\": {\n      \"sobraMesTotal\": 1130,\n      \"horasOcupadasMes\": 15\n    },\n    \"itens\": [\n      {\n        \"id\": \"c0ffee00-0000-4000-8000-000000000001\",\n        \"nome\": \"Brownie tradicional\",\n        \"preco\": 6,\n        \"custoTotal\": 2.211538461538462,\n        \"partes\": {\n          \"material\": 1.36,\n          \"trabalho\": 0.6,\n          \"despesas\": 0.03,\n          \"perdas\": 0.22\n        },\n        \"precoMinimo\": 2.22,\n        \"precoIdeal\": 3.16,\n        \"sobra\": 3.79,\n        \"sobraPct\": 63.1,\n        \"sobraPorHora\": 75.77,\n        \"minutos\": 3,\n        \"status\": \"verde\",\n        \"vendasMes\": 200,\n        \"sobraMes\": 757.69,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **material**: R$ 1,36 de R$ 2,21 (61%).\",\n          \"No material, o insumo mais caro é **Chocolate meio amargo** (39% do material). Fique de olho no preço dele.\",\n          \"Preço saudável! Cobre todos os custos e sobram R$ 3,79 (63%) por unidade. Com 200 unidades por mês, sobram cerca de R$ 757,69.\",\n          \"Se precisar dar desconto, dá para baixar até **R$ 3,16** sem sair da sua meta, ou até R$ 2,22 sem ter prejuízo.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Chocolate meio amargo\",\n            \"porUnidade\": 0.53\n          },\n          {\n            \"nome\": \"Nescau\",\n            \"porUnidade\": 0.5\n          },\n          {\n            \"nome\": \"Gás\",\n            \"porUnidade\": 0.23\n          }\n        ]\n      },\n      {\n        \"id\": \"c0ffee00-0000-4000-8000-000000000002\",\n        \"nome\": \"Brownie recheado\",\n        \"preco\": 9,\n        \"custoTotal\": 2.794871794871795,\n        \"partes\": {\n          \"material\": 1.6,\n          \"trabalho\": 1,\n          \"despesas\": 0.06,\n          \"perdas\": 0.14\n        },\n        \"precoMinimo\": 2.8,\n        \"precoIdeal\": 4,\n        \"sobra\": 6.21,\n        \"sobraPct\": 68.9,\n        \"sobraPorHora\": 74.46,\n        \"minutos\": 5,\n        \"status\": \"verde\",\n        \"vendasMes\": 60,\n        \"sobraMes\": 372.31,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **material**: R$ 1,60 de R$ 2,79 (57%).\",\n          \"No material, o insumo mais caro é **Chocolate meio amargo** (58% do material). Fique de olho no preço dele.\",\n          \"Preço saudável! Cobre todos os custos e sobram R$ 6,21 (69%) por unidade. Com 60 unidades por mês, sobram cerca de R$ 372,31.\",\n          \"Se precisar dar desconto, dá para baixar até **R$ 4,00** sem sair da sua meta, ou até R$ 2,80 sem ter prejuízo.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Chocolate meio amargo\",\n            \"porUnidade\": 0.93\n          },\n          {\n            \"nome\": \"Nescau\",\n            \"porUnidade\": 0.33\n          },\n          {\n            \"nome\": \"Gás\",\n            \"porUnidade\": 0.23\n          }\n        ]\n      }\n    ],\n    \"dicas\": [\n      {\n        \"id\": \"falta-ferramenta\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"E o desgaste das ferramentas?\",\n        \"texto\": \"Ferramentas e equipamentos se gastam e precisam ser trocados. Cadastre quanto custa repor e de quanto em quanto tempo, que o app divide esse valor nos seus preços.\",\n        \"acao\": {\n          \"label\": \"Cadastrar ferramenta\",\n          \"to\": \"/despesas?aba=ferramentas\"\n        }\n      },\n      {\n        \"id\": \"falta-deslocamento\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Você se desloca para trabalhar ou comprar?\",\n        \"texto\": \"Gasolina, passagem ou aplicativo para atender, entregar ou buscar material também é custo do negócio.\",\n        \"acao\": {\n          \"label\": \"Lançar despesa\",\n          \"to\": \"/despesas\"\n        }\n      },\n      {\n        \"id\": \"jornada-ociosa\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Boa parte da sua jornada fica sem venda\",\n        \"texto\": \"Suas vendas ocupam 17% das horas que você trabalha. As despesas fixas são divididas pelas horas da jornada; se o resto do tempo não gera venda, cada produto precisa pagar mais despesa do que aparece aqui. Vale conferir as horas por semana e as vendas por mês.\",\n        \"acao\": {\n          \"label\": \"Ver ajustes\",\n          \"to\": \"/ajustes\"\n        }\n      }\n    ]\n  },\n  \"historico\": [],\n  \"pergunta\": \"se eu cobrar 5 reais no brownie tradicional ainda sobra alguma coisa?\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "Ficha sem valor da hora (não pode sugerir preço)",
+          "request": {
+            "description": "",
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Agent-Key",
+                "value": "{{agentKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/chat",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contexto\": {\n    \"tipo\": \"servico\",\n    \"valorHora\": null,\n    \"horasSemana\": 40,\n    \"metaSobraPct\": 30,\n    \"despesas\": {\n      \"porMes\": 895.9,\n      \"ferramentasPorMes\": 15,\n      \"totalPorMes\": 910.9,\n      \"porHora\": 5.26,\n      \"horasMes\": 173.33,\n      \"lista\": [\n        {\n          \"categoria\": \"Aluguel\",\n          \"valor\": 600\n        },\n        {\n          \"categoria\": \"Luz / energia\",\n          \"valor\": 120\n        },\n        {\n          \"categoria\": \"Internet / telefone\",\n          \"valor\": 99.9\n        },\n        {\n          \"categoria\": \"Impostos / MEI\",\n          \"valor\": 76\n        }\n      ],\n      \"ferramentas\": [\n        {\n          \"nome\": \"Pinça e tesoura\",\n          \"porMes\": 15\n        }\n      ]\n    },\n    \"resumo\": {\n      \"sobraMesTotal\": 2240.16,\n      \"horasOcupadasMes\": 55\n    },\n    \"itens\": [\n      {\n        \"id\": \"4f6a1c2e-0b7d-4c1e-9a55-1d2e3f4a5b6c\",\n        \"nome\": \"Buço com cera\",\n        \"preco\": 15,\n        \"custoTotal\": 2.433798076923077,\n        \"partes\": {\n          \"material\": 1.12,\n          \"trabalho\": 0,\n          \"despesas\": 1.31,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 2.44,\n        \"precoIdeal\": 3.48,\n        \"sobra\": 12.57,\n        \"sobraPct\": 83.8,\n        \"sobraPorHora\": 50.26,\n        \"minutos\": 15,\n        \"status\": \"incompleto\",\n        \"vendasMes\": 40,\n        \"sobraMes\": 502.65,\n        \"faltando\": [\n          \"o valor da sua hora de trabalho\"\n        ],\n        \"explicacao\": [\n          \"A conta ainda está incompleta: falta o valor da sua hora de trabalho. Sem isso, seu trabalho entra de graça no preço.\",\n          \"O que mais pesa no custo é **despesas fixas**: R$ 1,31 de R$ 2,43 (54%).\",\n          \"No material, o insumo mais caro é **Cera depilatória** (89% do material). Fique de olho no preço dele.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Cera depilatória\",\n            \"porUnidade\": 1\n          },\n          {\n            \"nome\": \"Espátula descartável\",\n            \"porUnidade\": 0.12\n          }\n        ]\n      },\n      {\n        \"id\": \"8b2d7e10-5c3a-4f2b-8e61-0a9b8c7d6e5f\",\n        \"nome\": \"Design com henna\",\n        \"preco\": 35,\n        \"custoTotal\": 6.041394230769232,\n        \"partes\": {\n          \"material\": 2.1,\n          \"trabalho\": 0,\n          \"despesas\": 3.94,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 6.05,\n        \"precoIdeal\": 8.64,\n        \"sobra\": 28.96,\n        \"sobraPct\": 82.7,\n        \"sobraPorHora\": 38.61,\n        \"minutos\": 45,\n        \"status\": \"incompleto\",\n        \"vendasMes\": 60,\n        \"sobraMes\": 1737.52,\n        \"faltando\": [\n          \"o valor da sua hora de trabalho\"\n        ],\n        \"explicacao\": [\n          \"A conta ainda está incompleta: falta o valor da sua hora de trabalho. Sem isso, seu trabalho entra de graça no preço.\",\n          \"O que mais pesa no custo é **despesas fixas**: R$ 3,94 de R$ 6,04 (65%).\",\n          \"No material, o insumo mais caro é **Henna** (95% do material). Fique de olho no preço dele.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Henna\",\n            \"porUnidade\": 2\n          },\n          {\n            \"nome\": \"Linha\",\n            \"porUnidade\": 0.1\n          }\n        ]\n      }\n    ],\n    \"dicas\": [\n      {\n        \"id\": \"sem-hora\",\n        \"nivel\": \"alerta\",\n        \"titulo\": \"Falta o valor da sua hora\",\n        \"texto\": \"Sem isso o app não sabe quanto vale o seu tempo, e o seu trabalho fica de graça no preço. Se não souber, o app ajuda a calcular.\",\n        \"acao\": {\n          \"label\": \"Definir minha hora\",\n          \"to\": \"/ajustes?hora=1\"\n        }\n      },\n      {\n        \"id\": \"falta-deslocamento\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Você se desloca para trabalhar ou comprar?\",\n        \"texto\": \"Gasolina, passagem ou aplicativo para atender, entregar ou buscar material também é custo do negócio.\",\n        \"acao\": {\n          \"label\": \"Lançar despesa\",\n          \"to\": \"/despesas\"\n        }\n      },\n      {\n        \"id\": \"jornada-ociosa\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Boa parte da sua jornada fica sem venda\",\n        \"texto\": \"Suas vendas ocupam 32% das horas que você trabalha. As despesas fixas são divididas pelas horas da jornada; se o resto do tempo não gera venda, cada serviço precisa pagar mais despesa do que aparece aqui. Vale conferir as horas por semana e as vendas por mês.\",\n        \"acao\": {\n          \"label\": \"Ver ajustes\",\n          \"to\": \"/ajustes\"\n        }\n      }\n    ]\n  },\n  \"historico\": [],\n  \"pergunta\": \"posso baixar o preço do buço?\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Erros esperados",
+      "item": [
+        {
+          "name": "403 sem a X-Agent-Key",
+          "request": {
+            "description": "",
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/chat",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contexto\": {\n    \"tipo\": \"servico\",\n    \"valorHora\": 25,\n    \"horasSemana\": 40,\n    \"metaSobraPct\": 30,\n    \"despesas\": {\n      \"porMes\": 895.9,\n      \"ferramentasPorMes\": 15,\n      \"totalPorMes\": 910.9,\n      \"porHora\": 5.26,\n      \"horasMes\": 173.33,\n      \"lista\": [\n        {\n          \"categoria\": \"Aluguel\",\n          \"valor\": 600\n        },\n        {\n          \"categoria\": \"Luz / energia\",\n          \"valor\": 120\n        },\n        {\n          \"categoria\": \"Internet / telefone\",\n          \"valor\": 99.9\n        },\n        {\n          \"categoria\": \"Impostos / MEI\",\n          \"valor\": 76\n        }\n      ],\n      \"ferramentas\": [\n        {\n          \"nome\": \"Pinça e tesoura\",\n          \"porMes\": 15\n        }\n      ]\n    },\n    \"resumo\": {\n      \"sobraMesTotal\": 865.16,\n      \"horasOcupadasMes\": 55\n    },\n    \"itens\": [\n      {\n        \"id\": \"8b2d7e10-5c3a-4f2b-8e61-0a9b8c7d6e5f\",\n        \"nome\": \"Design com henna\",\n        \"preco\": 35,\n        \"custoTotal\": 24.79139423076923,\n        \"partes\": {\n          \"material\": 2.1,\n          \"trabalho\": 18.75,\n          \"despesas\": 3.94,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 24.8,\n        \"precoIdeal\": 35.42,\n        \"sobra\": 10.21,\n        \"sobraPct\": 29.2,\n        \"sobraPorHora\": 13.61,\n        \"minutos\": 45,\n        \"status\": \"amarelo\",\n        \"vendasMes\": 60,\n        \"sobraMes\": 612.52,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **seu trabalho**: R$ 18,75 de R$ 24,79 (76%).\",\n          \"No material, o insumo mais caro é **Henna** (95% do material). Fique de olho no preço dele.\",\n          \"O preço cobre o custo e sobram R$ 10,21 (29% do preço), abaixo da sua meta de 30%.\",\n          \"Para chegar na meta, o preço seria **R$ 35,42**.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Henna\",\n            \"porUnidade\": 2\n          },\n          {\n            \"nome\": \"Linha\",\n            \"porUnidade\": 0.1\n          }\n        ]\n      },\n      {\n        \"id\": \"4f6a1c2e-0b7d-4c1e-9a55-1d2e3f4a5b6c\",\n        \"nome\": \"Buço com cera\",\n        \"preco\": 15,\n        \"custoTotal\": 8.683798076923077,\n        \"partes\": {\n          \"material\": 1.12,\n          \"trabalho\": 6.25,\n          \"despesas\": 1.31,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 8.69,\n        \"precoIdeal\": 12.41,\n        \"sobra\": 6.32,\n        \"sobraPct\": 42.1,\n        \"sobraPorHora\": 25.26,\n        \"minutos\": 15,\n        \"status\": \"verde\",\n        \"vendasMes\": 40,\n        \"sobraMes\": 252.65,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **seu trabalho**: R$ 6,25 de R$ 8,68 (72%).\",\n          \"No material, o insumo mais caro é **Cera depilatória** (89% do material). Fique de olho no preço dele.\",\n          \"Preço saudável! Cobre todos os custos e sobram R$ 6,32 (42%) por atendimento. Com 40 atendimentos por mês, sobram cerca de R$ 252,65.\",\n          \"Se precisar dar desconto, dá para baixar até **R$ 12,41** sem sair da sua meta, ou até R$ 8,69 sem ter prejuízo.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Cera depilatória\",\n            \"porUnidade\": 1\n          },\n          {\n            \"nome\": \"Espátula descartável\",\n            \"porUnidade\": 0.12\n          }\n        ]\n      }\n    ],\n    \"dicas\": [\n      {\n        \"id\": \"falta-deslocamento\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Você se desloca para trabalhar ou comprar?\",\n        \"texto\": \"Gasolina, passagem ou aplicativo para atender, entregar ou buscar material também é custo do negócio.\",\n        \"acao\": {\n          \"label\": \"Lançar despesa\",\n          \"to\": \"/despesas\"\n        }\n      },\n      {\n        \"id\": \"jornada-ociosa\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Boa parte da sua jornada fica sem venda\",\n        \"texto\": \"Suas vendas ocupam 32% das horas que você trabalha. As despesas fixas são divididas pelas horas da jornada; se o resto do tempo não gera venda, cada serviço precisa pagar mais despesa do que aparece aqui. Vale conferir as horas por semana e as vendas por mês.\",\n        \"acao\": {\n          \"label\": \"Ver ajustes\",\n          \"to\": \"/ajustes\"\n        }\n      }\n    ]\n  },\n  \"historico\": [],\n  \"pergunta\": \"oi\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        },
+        {
+          "name": "400 pergunta vazia",
+          "request": {
+            "description": "",
+            "method": "POST",
+            "header": [
+              {
+                "key": "X-Agent-Key",
+                "value": "{{agentKey}}"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "url": "{{baseUrl}}/chat",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"contexto\": {\n    \"tipo\": \"servico\",\n    \"valorHora\": 25,\n    \"horasSemana\": 40,\n    \"metaSobraPct\": 30,\n    \"despesas\": {\n      \"porMes\": 895.9,\n      \"ferramentasPorMes\": 15,\n      \"totalPorMes\": 910.9,\n      \"porHora\": 5.26,\n      \"horasMes\": 173.33,\n      \"lista\": [\n        {\n          \"categoria\": \"Aluguel\",\n          \"valor\": 600\n        },\n        {\n          \"categoria\": \"Luz / energia\",\n          \"valor\": 120\n        },\n        {\n          \"categoria\": \"Internet / telefone\",\n          \"valor\": 99.9\n        },\n        {\n          \"categoria\": \"Impostos / MEI\",\n          \"valor\": 76\n        }\n      ],\n      \"ferramentas\": [\n        {\n          \"nome\": \"Pinça e tesoura\",\n          \"porMes\": 15\n        }\n      ]\n    },\n    \"resumo\": {\n      \"sobraMesTotal\": 865.16,\n      \"horasOcupadasMes\": 55\n    },\n    \"itens\": [\n      {\n        \"id\": \"8b2d7e10-5c3a-4f2b-8e61-0a9b8c7d6e5f\",\n        \"nome\": \"Design com henna\",\n        \"preco\": 35,\n        \"custoTotal\": 24.79139423076923,\n        \"partes\": {\n          \"material\": 2.1,\n          \"trabalho\": 18.75,\n          \"despesas\": 3.94,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 24.8,\n        \"precoIdeal\": 35.42,\n        \"sobra\": 10.21,\n        \"sobraPct\": 29.2,\n        \"sobraPorHora\": 13.61,\n        \"minutos\": 45,\n        \"status\": \"amarelo\",\n        \"vendasMes\": 60,\n        \"sobraMes\": 612.52,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **seu trabalho**: R$ 18,75 de R$ 24,79 (76%).\",\n          \"No material, o insumo mais caro é **Henna** (95% do material). Fique de olho no preço dele.\",\n          \"O preço cobre o custo e sobram R$ 10,21 (29% do preço), abaixo da sua meta de 30%.\",\n          \"Para chegar na meta, o preço seria **R$ 35,42**.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Henna\",\n            \"porUnidade\": 2\n          },\n          {\n            \"nome\": \"Linha\",\n            \"porUnidade\": 0.1\n          }\n        ]\n      },\n      {\n        \"id\": \"4f6a1c2e-0b7d-4c1e-9a55-1d2e3f4a5b6c\",\n        \"nome\": \"Buço com cera\",\n        \"preco\": 15,\n        \"custoTotal\": 8.683798076923077,\n        \"partes\": {\n          \"material\": 1.12,\n          \"trabalho\": 6.25,\n          \"despesas\": 1.31,\n          \"perdas\": 0\n        },\n        \"precoMinimo\": 8.69,\n        \"precoIdeal\": 12.41,\n        \"sobra\": 6.32,\n        \"sobraPct\": 42.1,\n        \"sobraPorHora\": 25.26,\n        \"minutos\": 15,\n        \"status\": \"verde\",\n        \"vendasMes\": 40,\n        \"sobraMes\": 252.65,\n        \"faltando\": [],\n        \"explicacao\": [\n          \"O que mais pesa no custo é **seu trabalho**: R$ 6,25 de R$ 8,68 (72%).\",\n          \"No material, o insumo mais caro é **Cera depilatória** (89% do material). Fique de olho no preço dele.\",\n          \"Preço saudável! Cobre todos os custos e sobram R$ 6,32 (42%) por atendimento. Com 40 atendimentos por mês, sobram cerca de R$ 252,65.\",\n          \"Se precisar dar desconto, dá para baixar até **R$ 12,41** sem sair da sua meta, ou até R$ 8,69 sem ter prejuízo.\"\n        ],\n        \"insumosMaisCaros\": [\n          {\n            \"nome\": \"Cera depilatória\",\n            \"porUnidade\": 1\n          },\n          {\n            \"nome\": \"Espátula descartável\",\n            \"porUnidade\": 0.12\n          }\n        ]\n      }\n    ],\n    \"dicas\": [\n      {\n        \"id\": \"falta-deslocamento\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Você se desloca para trabalhar ou comprar?\",\n        \"texto\": \"Gasolina, passagem ou aplicativo para atender, entregar ou buscar material também é custo do negócio.\",\n        \"acao\": {\n          \"label\": \"Lançar despesa\",\n          \"to\": \"/despesas\"\n        }\n      },\n      {\n        \"id\": \"jornada-ociosa\",\n        \"nivel\": \"dica\",\n        \"titulo\": \"Boa parte da sua jornada fica sem venda\",\n        \"texto\": \"Suas vendas ocupam 32% das horas que você trabalha. As despesas fixas são divididas pelas horas da jornada; se o resto do tempo não gera venda, cada serviço precisa pagar mais despesa do que aparece aqui. Vale conferir as horas por semana e as vendas por mês.\",\n        \"acao\": {\n          \"label\": \"Ver ajustes\",\n          \"to\": \"/ajustes\"\n        }\n      }\n    ]\n  },\n  \"historico\": [],\n  \"pergunta\": \"\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

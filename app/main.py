@@ -61,10 +61,7 @@ async def health() -> dict:
 
 @app.post("/chat", response_model=RespostaChat)
 async def chat(pedido: PedidoChat):
-    if not pedido.consentimento:
-        return erro(403, "Para usar o assistente, autorize o envio dos dados da sua ficha.")
-
-    agente = agent_factory.create_agent(pedido.contexto, pedido.historico)
+    agente =agent_factory.create_agent(pedido.contexto, pedido.historico)
     ficha = "<ficha>" + pedido.contexto.model_dump_json() + "</ficha>"  # dado, não instrução: fica fora do system prompt
     inicio, n_historico = time.perf_counter(), len(agente.messages)
     try:

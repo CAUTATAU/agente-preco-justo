@@ -99,7 +99,7 @@ class Mensagem(BaseModel):
 
 
 class PedidoChat(BaseModel):
-    consentimento: bool
+    # O aceite do envio dos dados à IA fica no termo de uso do cadastro (decisão da equipe sobre o RNF06)
     contexto: Contexto
     historico: list[Mensagem] = Field(default=[], max_length=6)
     pergunta: str = Field(min_length=1, max_length=500)
